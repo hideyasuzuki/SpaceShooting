@@ -17,16 +17,28 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(0, -speed * Time.deltaTime, 0);
-        GameObjectDestroy(gameObject);
+
+        if (transform.position.y <= destroyLine)
+        {
+            GameObjectDestroy(gameObject);
+        }
     }
 
     void GameObjectDestroy(GameObject gameObject)
     {
         if (gameObject != null)
         {
-            if(transform.position.y <= destroyLine)
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision != null)
+        {
+            if(collision.gameObject.tag == "Player")
             {
-                Destroy(gameObject);
+                GameObjectDestroy(gameObject);
             }
         }
     }

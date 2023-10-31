@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject[] enemyPrefab = new GameObject[3];
     //時間間隔の最小値
     [SerializeField] float minTime = 2f;
     //時間間隔の最大値
@@ -38,8 +38,9 @@ public class EnemyManager : MonoBehaviour
         //経過時間が生成時間になったとき(生成時間より大きくなったとき)
         if (time > interval)
         {
+            int enemyNumber = Random.Range(0, enemyPrefab.Length);
             //enemyをインスタンス化する(生成する)
-            GameObject enemy = Instantiate(enemyPrefab);
+            GameObject enemy = Instantiate(enemyPrefab[enemyNumber],transform.position,transform.rotation);
             //生成した敵の位置をランダムに設定する
             enemy.transform.position = GetRandomPosition();
             //経過時間を初期化して再度時間計測を始める
