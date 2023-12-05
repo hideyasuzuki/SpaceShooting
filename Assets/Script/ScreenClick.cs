@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class ScreenClick : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static ScreenClick instance;
+    void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
