@@ -17,7 +17,14 @@ public class ScreenClick : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("StageSelect");
+            if (SceneManager.GetActiveScene().name == "Title")
+            {
+                SceneManager.LoadScene("StageSelect");
+            }
+            else if(SceneManager.GetActiveScene().name == "Result")
+            {
+                SceneManager.LoadScene("Title");
+            }
         }
     }
 }
