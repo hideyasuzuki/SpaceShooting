@@ -9,9 +9,9 @@ public class Enemy2 : MonoBehaviour
     float x;                       //三角関数の数値設定
     float speed = 3f;              //スピードの数値設
     float radius = 0.1f;           //半径の設定
-    float destroyLine = -6.0f;
+    float destroyLine = -5f;
     const float MOVE_MAX_X = 2.3f;
-    const float MOVE_MAX_Y = 4.3f;
+    const float MOVE_MAX_Y = 6f;
     void Start()
     {
         score = GameObject.Find("Score").GetComponent<Score>();
