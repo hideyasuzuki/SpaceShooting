@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    Score score;
     float speed = 3.0f;
     float destroyLine = -6.0f;
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        score  = GameObject.Find("Score").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -36,6 +36,11 @@ public class Enemy : MonoBehaviour
     {
         if(collision != null)
         {
+            if(collision.gameObject.tag == "PlayerBullet")
+            {
+                score.score += 100;
+                GameObjectDestroy(gameObject);
+            }
             if(collision.gameObject.tag == "Player")
             {
                 GameObjectDestroy(gameObject);
