@@ -40,13 +40,13 @@ public class EnemyManager : MonoBehaviour
             int enemyNumber = Random.Range(0, enemyPrefab.Length);
             //enemyをインスタンス化する(生成する)
             GameObject enemy = Instantiate(enemyPrefab[enemyNumber], transform.position, transform.rotation);
-            if (enemyNumber == 1)
-            {
-                enemy.transform.position = GetRandomPosition2();
-                time = 0f;
-                interval = GetRandomTime();
-                return;
-            }
+            //if (enemyNumber == 1)
+            //{
+            //    enemy.transform.position = GetRandomPosition2();
+            //    time = 0f;
+            //    interval = GetRandomTime();
+            //    return;
+            //}
             //生成した敵の位置をランダムに設定する
             enemy.transform.position = GetRandomPosition();
             //経過時間を初期化して再度時間計測を始める
